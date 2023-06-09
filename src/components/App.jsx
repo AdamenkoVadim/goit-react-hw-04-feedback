@@ -14,22 +14,20 @@ export function App() {
 
   const onLeaveFeedback = event => {
     if (event === 'good') {
-      setGood(good + 1);
+      setGood(prevState => prevState + 1);
     } else if (event === 'neutral') {
-      setNeutral(neutral + 1);
+      setNeutral(prevState => prevState + 1);
     } else if (event === 'bad') {
-      setBad(bad + 1);
+      setBad(prevState => prevState + 1);
     }
   };
 
   const countTotalFeedback = () => {
-    const total = good + bad + neutral;
-    return total;
+    return good + bad + neutral;
   };
 
   const countPositiveFeedbackPercentage = total => {
-    const positiveFeedbackPercentage = Math.round((good / total) * 100);
-    return positiveFeedbackPercentage;
+    return Math.round((good / total) * 100);
   };
 
   const options = Object.keys(feedBack);
